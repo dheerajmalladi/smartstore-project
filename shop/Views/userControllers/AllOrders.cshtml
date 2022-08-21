@@ -1,0 +1,51 @@
+﻿@model IEnumerable<shop.Models.orders>
+
+@{
+    ViewData["Title"] = "AllOrders";
+}
+<style>
+    body{
+        background-image:url("https://i.pinimg.com/originals/61/66/1c/61661c1eb532fe52a28583e1acd238a0.jpg");
+        background-position: center;
+        background-size:cover; 
+    }
+</style>
+<h1>AllOrders</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.orderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.totalprice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalprice)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

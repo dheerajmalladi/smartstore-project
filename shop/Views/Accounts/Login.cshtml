@@ -1,0 +1,58 @@
+﻿@model shop.Models.Login
+
+@{
+    ViewData["Title"] = "Login";
+}
+<style>
+    body{
+        background-image:url("https://media.istockphoto.com/photos/shopping-cart-icon-on-smart-phone-screen-shop-online-concept-picture-id545569554?k=20&m=545569554&s=612x612&w=0&h=RoRq9NyV_sAlXz9zqe4mNMrFG2QMI_As3AjQN25pY44=");
+        background-position: center;
+        background-size:cover; 
+    }
+</style>
+
+<h1><center>Smart Store</center></h1>
+
+<h1>Login</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="emailid" class="control-label"></label>
+                <input asp-for="emailid" class="form-control" />
+                <span asp-validation-for="emailid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="btn btn-success mt-2">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="btn">
+    <a class="btn"asp-action="signup">SignUp</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+    @{
+    try{
+        if(TempData["LoginStatus"]!=null)
+        {
+            <label class="text-danger">Incorrect emailid or password</label>
+        }
+    }
+                catch
+                {
+
+                }
+}

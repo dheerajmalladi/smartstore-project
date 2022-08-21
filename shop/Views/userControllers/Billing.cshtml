@@ -1,0 +1,86 @@
+﻿@model shop.Models.BillingAddress
+
+@{
+    ViewData["Title"] = "Billing";
+}
+
+<h1>Billing</h1>
+
+<h4>BillingAddress</h4>
+<hr />
+<h2>Responsive Checkout Form</h2>
+<div class="row">
+  <div class="col-ms-75">
+    <div class="container">
+      <form action="/action_page.php">
+      
+        <div class="row">
+          <div class="col-ms-50">
+            <h3>Billing Address</h3>
+            <label asp-for="fullname"><i class="control-form"></i> Full Name</label>
+            <input asp-for="fullname" class="form-control"/>
+            <label asp-for="Email" class="control-form"></label>
+            <input asp-for="Email" class="form-control">
+            <label asp-for="Address"><i class="form-control"></i> Address</label>
+            <input asp-for="Address" class="form-control">
+            <label asp-for="City"><i class="form-control"></i> City</label>
+            <input asp-for="City" class="form-control">
+
+            <div class="row">
+              <div class="col-ms-50">
+                <label asp-for="State">State</label>
+                <input asp-for="State"class="form-control">
+              </div>
+              <div class="col-50">
+                <label asp-for="Zip">Zip</label>
+                <input asp-for="Zip"class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-ms-50">
+            <h3>Payment</h3>
+            <label for="fname">Accepted Cards</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div>
+            <label asp-for="NameonCard">Name on Card</label>
+            <input asp-for="State"class="form-control">
+            <label asp-for="Creditcard">Credit card number</label>
+            <input asp-for="State"class="form-control">
+            <label asp-for="expmonth">Exp Month</label>
+            <input asp-for="State"class="form-control">
+            <div class="row">
+              <div class="col-ms-50">
+                <label asp-for="expyear">Exp Year</label>
+                <input asp-for="State"class="form-control">
+              </div>
+              <div class="col-ms-50">
+                <label asp-for="CVV">CVV</label>
+                <input asp-for="State"class="form-control">
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <label>
+          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+        </label>
+
+        <a onclick="fdemo()" asp-action="productsDisplay" asp-controller="Users" class="btn btn-success">Proceed to payment</a>
+        @*<input type="submit" value="Proceed to pay" class="btn">*@
+      </form>
+    </div>
+  </div>
+
+  </div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

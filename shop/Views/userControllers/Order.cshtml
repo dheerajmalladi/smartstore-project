@@ -1,0 +1,44 @@
+﻿@model shop.Models.orders
+
+@{
+    ViewData["Title"] = "Order";
+}
+<style>
+    body{
+        background-image:url("https://previews.123rf.com/images/houbacze/houbacze1709/houbacze170900191/85995277-red-vector-flat-design-background-order-it-is-well-adapted-for-web-design-.jpg");
+        background-position: center;
+        background-size:cover; 
+    }
+</style>
+
+
+<h1>Order</h1>
+
+<div>
+    <h4>orders</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+        <dd class = "col-sm-10">
+            @TempData["id"]
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+        <dd class = "col-sm-10">
+            @TempData["quantity"]
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.totalprice)
+        </dt>
+        <dd class = "col-sm-10">
+            @TempData["amount"]
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-primary" asp-area="" asp-controller="userControllers" asp-action="Orders">place the Order</a>
+    <a class="btn btn-info" asp-area="" asp-controller="Cart" asp-action="Index" asp-route-id="@TempData["id"]">back</a>
+</div>

@@ -1,0 +1,64 @@
+﻿@model shop.Models.Cart
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Cart</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="cartid" />
+            <div class="form-group">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_id" class="control-label"></label>
+                <input asp-for="p_id" class="form-control" />
+                <span asp-validation-for="p_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_name" class="control-label"></label>
+                <input asp-for="p_name" class="form-control" />
+                <span asp-validation-for="p_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="quantity" class="control-label"></label>
+                <input asp-for="quantity" class="form-control" />
+                <span asp-validation-for="quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_price" class="control-label"></label>
+                <input asp-for="p_price" class="form-control" />
+                <span asp-validation-for="p_price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="totalprice" class="control-label"></label>
+                <input asp-for="totalprice" class="form-control" />
+                <span asp-validation-for="totalprice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_image_url" class="control-label"></label>
+                <img src="~/images/asp-for="p_image_url" alt="" width="120" height:"80" />
+                <span asp-validation-for="p_image_url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-route-id="@Model?.id">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<shop.Models.Products>
+@{
+     ViewData["Title"] = "productsDisplay";
+}
+<style>
+    body{
+        background-image:url("https://thumbs.dreamstime.com/t/empty-white-wooden-table-over-blurred-store-with-bokeh-background-banner-product-display-144200027.jpg");
+        background-position: center;
+        background-size:cover; 
+    }
+</style>
+
+<style>
+    .card{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 500px;
+        padding-left:10px;
+        padding-right:10px;
+    }
+</style>
+<div>
+@foreach(var item in Model)
+{
+<div class="card col-lg-7">
+  <img src="~/images/@Html.DisplayFor(modelItem => item.p_image_url)" alt="" width="120" height:"80" />
+  <h2 class="col-lg-6">@Html.DisplayFor(modelItem => item.p_name)</h2>
+  <p class="center">@Html.DisplayFor(modelItem => item.p_price) Rs</p>
+  <p>@Html.DisplayFor(modelItem => item.p_description)</p>
+  <a class="btn btn-primary" asp-area="" asp-controller="Cart" asp-action="Create" asp-route-p_id="@item.p_id">Details</a>
+</div>
+<hr />
+}
+</div>

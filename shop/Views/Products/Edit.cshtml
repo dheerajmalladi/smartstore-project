@@ -1,0 +1,73 @@
+﻿@model shop.Models.Products
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    body{
+        background-image:url("https://i.pinimg.com/originals/68/d2/40/68d24006398747fbf0c88ceeebb138fe.jpg");
+        background-position: center;
+        background-size:cover; 
+    }
+</style>
+<h1>Edit Product</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="p_id" />
+            <div class="form-group">
+                <label asp-for="p_name" class="control-label"></label>
+                <input asp-for="p_name" class="form-control" />
+                <span asp-validation-for="p_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_type" class="control-label"></label>
+                <input asp-for="p_type" class="form-control" />
+                <span asp-validation-for="p_type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_brand" class="control-label"></label>
+                <input asp-for="p_brand" class="form-control" />
+                <span asp-validation-for="p_brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_description" class="control-label"></label>
+                <input asp-for="p_description" class="form-control" />
+                <span asp-validation-for="p_description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_size" class="control-label"></label>
+                <input asp-for="p_size" class="form-control" />
+                <span asp-validation-for="p_size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_price" class="control-label"></label>
+                <input asp-for="p_price" class="form-control" />
+                <span asp-validation-for="p_price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_quantity" class="control-label"></label>
+                <input asp-for="p_quantity" class="form-control" />
+                <span asp-validation-for="p_quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_image_url" class="control-label"></label>
+                 <img src="~/images/@Html.DisplayFor(model=>model.p_image_url)" alt="" width="120" height:"80" />
+                <span asp-validation-for="p_image_url" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-4">
+                <input type="submit" value="Save" class="btn btn-primary" /> |
+                <a class="btn btn-info" asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

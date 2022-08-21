@@ -1,0 +1,74 @@
+﻿@model shop.Models.Products
+@{
+    ViewData["Title"] = "details";
+}
+<style>
+    body{
+        background-image:url("https://previews.123rf.com/images/mangpor2004/mangpor20041507/mangpor2004150700099/42891569-add-to-cart-on-blur-store-business-e-commerce-on-line-shopping-background.jpg");
+        background-position: center;
+        background-size:cover; 
+    }
+</style>
+
+
+<h1>Product Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.p_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.p_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.p_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.p_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.p_price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.p_price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.p_image_url)
+        </dt>
+        <dd class = "col-sm-10">
+           <img src="~/images/@Html.DisplayFor(model => model.p_image_url)" width="120" height="80"/>
+        </dd>
+    </dl>
+    
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+                <input type="hidden" asp-for="p_id"  name="p_id"  />
+                
+                <input type="hidden" asp-for="p_name" name="p_name" />
+                <input type="hidden" asp-for="p_image_url" name="p_image_url" />
+              <input type="hidden" asp-for="p_price" name="p_price" />
+            <div class="form-group">
+                <label asp-for="p_quantity" class="control-label"></label>
+                <input asp-for="p_quantity" class="form-control" />
+                <span asp-validation-for="p_quantity" class="text-danger"></span>
+            </div>
+                
+            <div class="form-group mt-2">
+                <button type="submit" class="btn btn-primary">AddToCart</button> 
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-area="" asp-action="productsDisplay" asp-controller="Products">Back to List</a>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

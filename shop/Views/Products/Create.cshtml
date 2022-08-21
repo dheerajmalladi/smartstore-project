@@ -1,0 +1,77 @@
+﻿@model shop.Models.Products
+
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    body{
+        background-image:url("https://image.shutterstock.com/image-vector/flat-line-design-website-banner-260nw-390382675.jpg");
+        background-position: center;
+        background-size:cover; 
+    }
+</style>
+
+<h1>Add a New Product</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="p_name" class="control-label"></label>
+                <input asp-for="p_name" class="form-control" />
+                <span asp-validation-for="p_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_type" class="control-label"></label>
+                <input asp-for="p_type" class="form-control" />
+                <span asp-validation-for="p_type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_brand" class="control-label"></label>
+                <input asp-for="p_brand" class="form-control" />
+                <span asp-validation-for="p_brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_description" class="control-label"></label>
+                <input asp-for="p_description" class="form-control" />
+                <span asp-validation-for="p_description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_size" class="control-label"></label>
+                <select asp-for="p_size" class="form-control">
+                    <option>--Select--</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <span asp-validation-for="p_size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_price" class="control-label"></label>
+                <input asp-for="p_price" class="form-control" />
+                <span asp-validation-for="p_price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_quantity" class="control-label"></label>
+                <input asp-for="p_quantity" class="form-control" />
+                <span asp-validation-for="p_quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="p_image_url" class="control-label"></label>
+                <input  class="form-control" type="file" name="file" />
+                <span asp-validation-for="p_image_url" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <input type="submit" value="Add Product" class="btn btn-primary" /> |
+                <a class="btn btn-info" asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

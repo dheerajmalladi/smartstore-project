@@ -1,0 +1,75 @@
+﻿@model IEnumerable<shop.Models.Products>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    body{
+        background-image:url("https://i.pinimg.com/originals/68/d2/40/68d24006398747fbf0c88ceeebb138fe.jpg");
+        background-position: center;
+        background-size:cover; 
+    }
+</style>
+
+
+<h1>All Products</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.p_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.p_type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.p_brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.p_description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.p_size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.p_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.p_image_url)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.p_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p_type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p_brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p_description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p_size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p_price)
+            </td>
+            <td>
+                  <img src="~/images/@Html.DisplayFor(modelItem => item.p_image_url)" alt="" width="80" height:"50" />
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.p_id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.p_id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

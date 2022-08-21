@@ -1,0 +1,66 @@
+﻿@model IEnumerable<shop.Models.orders>
+
+@{
+    ViewData["Title"] = "ordersById";
+}
+<style>
+    body{
+        background-image:url("https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-send-express-delivery-logistics-poster-image_195881.jpg");
+        background-position: center;
+        background-size:cover; 
+    }
+</style>
+
+
+<h1>My Orders</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.orderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.totalprice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalprice)
+            </td>
+            <td>
+                <a asp-action="DeleteUser" asp-controller="userControllers" asp-route-orderId="@item.orderId">Cancel Order</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@{
+    try
+    {
+        if(@TempData["cancel"]=="ok")
+        {
+            <script>
+            swal("Order", "has been canceled successfully", "success");
+            </script>
+        }
+    }
+    catch
+    {
+        
+    }
+}

@@ -1,0 +1,73 @@
+﻿@model shop.Models.Products
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    body{
+        background-image:url("https://i.pinimg.com/originals/68/d2/40/68d24006398747fbf0c88ceeebb138fe.jpg");
+        background-position: center;
+        background-size:cover; 
+    }
+</style>
+
+<h1>Product Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.p_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.p_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.p_type)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.p_type)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.p_brand)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.p_brand)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.p_description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.p_description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.p_size)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.p_size)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.p_price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.p_price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.p_quantity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.p_quantity)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.p_image_url)
+        </dt>
+        <dd class = "col-sm-10">
+           <img src="~/images/@Html.DisplayFor(model => model.p_image_url)" width="120" height="80"/>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model?.p_id">Edit</a> |
+    <a class="btn btn-info" asp-action="Index">Back to List</a>
+</div>

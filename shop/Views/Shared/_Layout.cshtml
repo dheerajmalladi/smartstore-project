@@ -1,0 +1,96 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor accessor
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - shop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/shop.styles.css" asp-append-version="true" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="welcome">SmartShop</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    @{
+                        try{
+                            if(accessor.HttpContext.Session.GetInt32("roll")!=null)
+                            {
+                                int? id = accessor.HttpContext.Session.GetInt32("id");
+                                int? rollid = accessor.HttpContext.Session.GetInt32("roll");
+                                        <ul class="navbar-nav flex-grow-1 justify-content-end">
+                                            @if (rollid == 2)
+                                    {
+                                                <div class="navbar-brand" style="margin-left:1%;">
+                                                    <!--<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Shopping">Welcome Customer</a>-->
+                                                    <label>Welcome User</label>
+                                                </div>
+                                                <li class="nav-item btn btn-outline-primary" style="margin-right:1%;">
+                                                    <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="productsDisplay">Go For Shopping</a>
+                                                </li>
+                                                <li class="nav-item btn btn-outline-primary" style="margin-right:1%;">
+                                                    <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index" asp-route-id="@id" >Cart</a>
+                                                </li>
+                                                <li class="nav-item btn btn-outline-primary" style="margin-right:1%;">
+                                                    <a class="nav-link text-dark" asp-area="" asp-controller="userControllers" asp-action="ordersById" asp-route-id="@id" >My Orders</a>
+                                                </li>
+                                    }
+                                    else if (rollid == 1)
+                                    {
+                                                <li class="nav-item btn btn-outline-primary" style="margin-right:1%;">
+                                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="GetAllUserDetails">Get users details</a>
+                                                </li>
+                                                 <li class="nav-item btn btn-outline-primary" style="margin-right:1%;">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Create" asp-route-id="@id">Add Product</a>
+                                                </li>
+                                                 <li class="nav-item btn btn-outline-primary" style="margin-right:1%;">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index" asp-route-id="@id">All Products</a>
+                                                </li>
+                                                <li class="nav-item btn btn-outline-primary" style="margin-right:1%;">
+                                                    <a class="nav-link text-dark" asp-area="" asp-controller="userControllers" asp-action="AllOrders" asp-route-id="@id" >All Orders</a>
+                                                </li>
+                                    }
+                                            <li class="nav-item btn btn-outline-primary" style="margin-right:1%;">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="MyDetails" asp-route-id="@id">My details</a>
+                                            </li>
+                                            <li class="nav-item btn btn-outline-primary" style="margin-right:1%;">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="Logout">LogOut</a>
+                                            </li>
+                                            </ul>
+                            }
+                        }
+                        catch
+                        {
+                            
+                        }
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - shop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<shop.Models.users>
+
+@{
+    ViewData["Title"] = "GetAllUserDetails";
+}
+<style>
+    body{
+        background-image:url("https://png.pngtree.com/thumb_back/fw800/back_our/20190625/ourmid/pngtree-flat-business-ppt-background-image_260277.jpg");
+        background-position: center;
+        background-size:cover; 
+    }
+</style>
+<h1>All Users Details</h1>
+
+<table class="table" border="2">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.emailid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.emailid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_category)
+            </td>
+            <td>
+                <a asp-action="DeleteUser" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
